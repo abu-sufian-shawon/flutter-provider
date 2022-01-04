@@ -9,14 +9,21 @@ class MyHomePage extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Provider Example App'),
+        title: Text('Provider Example App ${context.watch<Counter>().count}'),
       ),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
           children:  <Widget>[
-            Text('You have pushed the button this many times: ${context.watch<Counter>().count}')
+            Text('You have pushed the button this many times: ${context.watch<Counter>().count}'),
+
+            ElevatedButton(
+                onPressed: (){
+                  Navigator.pushNamed(context, '/second');
+                },
+                child: const Text('Launch Screen'),
+            )
           ],
         ),
       ),
